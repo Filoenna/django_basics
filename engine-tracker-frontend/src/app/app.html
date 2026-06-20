@@ -1,0 +1,36 @@
+<h1>System Engine Tracker</h1>
+<hr>
+
+<h2>Dodaj nową część:</h2>
+<form [formGroup]="partForm" (ngSubmit)="onSubmit()" style="margin-bottom: 30px; border: 2px dashed #666; padding: 15px; border-radius: 8px;">
+  
+  <div style="margin-bottom: 10px;">
+    <label>Nazwa części:</label><br>
+    <input type="text" formControlName="name">
+  </div>
+
+  <div style="margin-bottom: 10px;">
+    <label>Numer seryjny:</label><br>
+    <input type="text" formControlName="serial_number">
+  </div>
+
+  <div style="margin-bottom: 10px;">
+    <label>ID Wolnej Specyfikacji (Liczba):</label><br>
+    <input type="number" formControlName="specification">
+  </div>
+
+  <button type="submit" [disabled]="partForm.invalid">Zapisz w Django</button>
+</form>
+
+<hr>
+
+<h2>Lista zarejestrowanych części:</h2>
+
+@for (part of parts(); track part.id) {
+  <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
+    <h3>⚙️ {{ part.name }}</h3>
+    <p><strong>Numer seryjny:</strong> {{ part.serial_number }}</p>
+  </div>
+} @empty {
+  <p>Brak części w bazie danych lub trwa ładowanie...</p>
+}
