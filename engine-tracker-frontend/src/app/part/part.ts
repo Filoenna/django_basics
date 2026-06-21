@@ -30,7 +30,7 @@ export class PartService {
     // Tworzymy pełny obiekt, którego żąda Django
     const fullPayload = {
       ...newPartData,
-      assigned_engineers: [9] // <--- Dorzucamy pustą listę, żeby DRF był szczęśliwy
+      assigned_engineers: [9] 
     };
 
     this.http.post<Part>(this.apiUrl, fullPayload).subscribe({
@@ -40,4 +40,5 @@ export class PartService {
       error: (err) => console.error('Błąd zapisu części w Django:', err)
     });
   }
+  
 }

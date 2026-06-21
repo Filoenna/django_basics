@@ -1,0 +1,19 @@
+<form [formGroup]="specificationForm" (ngSubmit)="onSubmit()" style="margin-bottom: 30px; border: 2px dashed #666; padding: 15px; border-radius: 8px;">
+  
+  <div style="margin-bottom: 10px;">
+    <label>Certification code:</label><br>
+    <input type="text" formControlName="certification_code">
+  </div>
+
+  <div style="margin-bottom: 10px;">
+    <label>Max temperature celsius:</label><br>
+    <input type="text" formControlName="max_temperature_celsius">
+  </div>
+
+  <div style="margin-bottom: 10px;">
+    <label>Last calibrated:</label><br>
+    <input type="date" formControlName="last_calibrated">
+  </div>
+
+  <button type="submit" [disabled]="specificationForm.invalid">Zapisz w Django</button>
+</form>
